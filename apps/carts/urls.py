@@ -3,8 +3,8 @@ from apps.carts.views import CartViewSet, CartDetailAPI, CartItemViewSet, CartIt
 
 
 urlpatterns = [
-    path('api/carts/', CartViewSet.as_view(), name='api_carts/'),
-    path('api/carts/<int:pk>/', CartDetailAPI.as_view(), name="api_carts_detail"),
-    path('api/cartitem/', CartItemViewSet.as_view(), name='api_cartitem/'),
-    path('api/cartitem/<int:pk>/', CartItemDetailAPI.as_view(), name="api_cartitem_detail"),
+    path('carts/', CartViewSet.as_view(), name='api_carts/'),
+    path('carts/<int:pk>/', CartDetailAPI.as_view(), name="api_carts_detail"),
+    path('cartitem/', CartItemViewSet.as_view(), name='api_cartitem/'),
+    path('cartitem/<int:pk>/', CartItemDetailAPI.as_view(), name="api_cartitem_detail"),
 ]

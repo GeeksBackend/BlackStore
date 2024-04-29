@@ -3,6 +3,6 @@ from apps.categories.views import CategoryViewSet, CategoryDetailAPI
 
 
 urlpatterns = [
-    path('api/categories/', CategoryViewSet.as_view(), name='api/categories/'),
-    path('api/categories/<int:pk>/', CategoryDetailAPI.as_view(), name="api_category_detail")
+    path('categories/', CategoryViewSet.as_view(), name='api/categories/'),
+    path('categories/<int:pk>/', CategoryDetailAPI.as_view(), name="api_category_detail")
 ]

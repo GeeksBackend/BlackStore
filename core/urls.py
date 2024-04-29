@@ -19,12 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+api_urlpatters = [
+    path('products/', include('apps.products.urls')),
+    path('categories/', include('apps.categories.urls')),
+    path('carts/', include('apps.carts.urls')),
+    path('users/', include('apps.users.urls')),
+]
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.products.urls')),
-    path('', include('apps.categories.urls')),
-    path('', include('apps.carts.urls')),
-    path('', include('apps.users.urls')),
+    path('api/', include(api_urlpatters))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
