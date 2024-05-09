@@ -4,6 +4,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from apps.products.models import Product
 from apps.products.serializers import ProductSerializer
+from apps.products.permissions import ProductPermission
 
 class ProductAPI(GenericViewSet,
                  mixins.ListModelMixin,
@@ -17,4 +18,9 @@ class ProductAPI(GenericViewSet,
     def get_permissions(self):
         if self.action == 'retrieve':
             return (IsAuthenticated(), )
+        if self.action in ('update', 'partial_update', 'destroy'):
+            return (ProductPermission(), )
         return (AllowAny(), )
+    
+    def perform_create(self, serializer):
+        return serializer.save(user=self.request.user)
